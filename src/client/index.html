@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealership</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">Dealership Database</div>
+    </nav>
+    <header>
+        <div class="selectionTable">
+            <label>Available Table</label>
+            <div class="listOfTables">
+                <button id="s1">Dealership_Car</button>
+            </div>
+        </div>
+        <div class="resTable">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Body Type</th>
+                    <th>Year Model</th>
+                    <th>Price</th>
+                </thead>
+                <tbody id="table1"></tbody>
+            </table>
+            
+        </div>
+    </header>
+    <section>
+        <div class="createCarForm">
+            <label>Create Car Form</label><br>
+            <input id="carName" type="text" placeholder="Car Name"><br>
+            <input id="carBrand" type="text" placeholder="Car Brand"><br>
+            <input id="carModel" type="text" placeholder="Car Model"><br>
+            <input id="carBType" type="text" placeholder="Car Body Type"><br>
+            <input id="carYM" type="text" placeholder="Car Year Model"><br>
+            <input id="carPrice" type="text" placeholder="Car Price"><br>
+            <button id="createCar">Create Car</button><br>
+            <br>
+
+            <label id="carNotif" class="hidden">Car has been created!</label>
+        </div>
+        <div class="resTable">
+            <table>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Body Type</th>
+                    <th>Year Model</th>
+                    <th>Price</th>
+                </thead>
+                <tbody id="table2"></tbody>
+            </table>
+        </div>
+    </section>
+    <script src="js/index.js"></script>
+</body>
+</html>
