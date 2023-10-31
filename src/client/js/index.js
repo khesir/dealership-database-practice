@@ -33,11 +33,39 @@ function loadHTMLTable(data) {
         tableHtml += `<td>${Car_body_type}</td>`;
         tableHtml += `<td>${Car_year_model}</td>`;
         tableHtml += `<td>${Car_price}</td>`;
+        tableHtml += `<td><button class="edit-row-btn" data-id=${Dealership_car_id}>Edit</button><button class="delete-row-btn" data-id=${Dealership_car_id}>Delete</button></td>`;
+        tableHtml += "</tr>";
         tableHtml += "</tr>";
     });
 
     table1.innerHTML = tableHtml;
     table2.innerHTML = tableHtml;
+}
+
+document.querySelector('table tbody').addEventListener('click', function(event) {
+    if (event.target.className === "delete-row-btn") {
+        deleteRowById(event.target.dataset.id);
+    }
+    if (event.target.className === "edit-row-btn") {
+        handleEditRow(event.target.dataset.id);
+    }
+});
+
+function deleteRowById(id) {
+    fetch('http://localhost:3000/car/' + id, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        }
+    });
+}
+
+function handleEditRow(id) {
+    const updateSection = document.querySelector('#update-row');
+    console.log("Update button is clicked")
 }
 
 // Add / Create a new car
@@ -74,19 +102,8 @@ addBtn.onclick = function () {
         body: JSON.stringify(carData),
       })
       .then(response => response.json())
-      .then(data => {
-        const x = document.getElementById('carNotif');
-        x.innerHTML = "Car has been created!";
-        x.classList.remove('hidden');
-        x.classList.add('success');
-        sleep(10000);
-        x.classList.add('hidden');
-    }).catch(error => {
-        console.log(error);
-        const x = document.getElementById('carNotif');
-        x.innerHTML = "Something when Wrong!";
-        x.classList.remove('hidden');
-    });
+      .then(data => insertRowToTable(data)).catch(error => {
+        console.log(error)});
 }
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -97,13 +114,18 @@ function insertRowToTable(data){
     const table2 = document.getElementById('table2');
     const isTableData1 = table1.querySelector(".no-data");
     const isTableData2 = table2.querySelector(".no-data");
-    const tableHtml = "";
+    tableHtml = "";
     tableHtml += "<tr>";
-    tableHtml += `<td>${data.name}</td>`;
+    tableHtml += `<td>${Dealership_car_id}</td>`;
+    tableHtml += `<td>${Car_name}</td>`;
+    tableHtml += `<td>${Car_brand}</td>`;
+    tableHtml += `<td>${Car_model}</td>`;
+    tableHtml += `<td>${Car_body_type}</td>`;
+    tableHtml += `<td>${Car_year_model}</td>`;
+    tableHtml += `<td>${Car_price}</td>`;
+    tableHtml += `<td><button class="edit-row-btn" id="${Dealership_car_id}">Edit</button><button class="delete-row-btn" id="${Dealership_car_id}">Delete</button></td>`;
+    tableHtml += "</tr>";
 
-    tableHtml += "</tr>";
-    tableHtml += "</tr>";
-    console.logt(tableHtml);
     if(isTableData1){
         table1.innerHTML += tableHtml;
     }
