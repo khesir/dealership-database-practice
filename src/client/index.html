@@ -9,6 +9,10 @@
 <body>
     <nav>
         <div class="container">Dealership Database</div>
+        <div>
+            <input type="text" name="" id="" placeholder="Search">
+            <button type="button" id="searchBtn">Search</button>
+        </div>
     </nav>
     <header>
         <div class="selectionTable">
@@ -27,6 +31,7 @@
                     <th>Body Type</th>
                     <th>Year Model</th>
                     <th>Price</th>
+                    <th colspan="2" style="text-align: right;">Actions</th>
                 </thead>
                 <tbody id="table1"></tbody>
             </table>
@@ -34,7 +39,7 @@
         </div>
     </header>
     <section>
-        <div class="createCarForm">
+        <form class="createForm">
             <label>Create Car Form</label><br>
             <input id="carName" type="text" placeholder="Car Name"><br>
             <input id="carBrand" type="text" placeholder="Car Brand"><br>
@@ -46,7 +51,7 @@
             <br>
 
             <label id="carNotif" class="hidden">Car has been created!</label>
-        </div>
+        </form>
         <div class="resTable">
             <table>
                 <thead>
@@ -57,6 +62,7 @@
                     <th>Body Type</th>
                     <th>Year Model</th>
                     <th>Price</th>
+                    <th colspan="2" style="text-align: right;">Actions</th>
                 </thead>
                 <tbody id="table2"></tbody>
             </table>

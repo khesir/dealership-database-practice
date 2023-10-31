@@ -12,14 +12,7 @@ body {
     margin: 0px;
 }   
 
-.hidden{
-    display: none;
-}
-.success{
-    color: white;
-    background-color: green;
-    padding: 10px;
-}
+
 nav {
     top: 0;
     left: 0;
@@ -50,21 +43,24 @@ header div{
     margin: 30px;
 }
 
-.listOfTables{
+.selectionTable{
     padding: 10px;
     margin: 20px;
-    
+    border-radius: 10px;
 }
 .resTable{
-    overflow: auto;
+    overflow:auto;
+    border-radius: 10px;
 }
-.resTable th{
-    padding: 0px 10px;
-    border: 1px solid black;
+.resTable table{
+    margin: 20px;
+
 }
-.resTable td{
-    padding: 10px;
-    margin: 10px;
+.resTable table,th,td{
+    padding: 10px 10px 10px 10px;
+    border: solid black 1px;
+    border-collapse: collapse;
+    text-align: left;
 }
 section {
     background-color: #858585;
@@ -79,4 +75,24 @@ section div{
     height: 70%;
     padding: 10px;
     margin: 30px;
+}
+form{
+    color:black;
+    background-color: #ececec;
+    height: 70%;
+    padding: 10px;
+    margin: 30px;
+}
+.createForm{
+    padding: 20px;
+    border-radius: 10px;
+}
+.hidden{
+    display: none;
+}
+.success{
+    color: white;
+    background-color: green;
+    padding: 10px;
+    transition: 0.5s;
 }
