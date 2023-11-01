@@ -35,6 +35,10 @@ class Car {
         let sql = `UPDATE dealership_car SET Car_name = '${name}', Car_brand = '${brand}', Car_model = '${model}', Car_body_type = '${body_type}', Car_year_model = '${year_model}', Car_price = '${price}' WHERE dealership_car_id = ${id}`;
         return db.execute(sql);
     }
+    static findBySearch(search){
+        let sql = `SELECT * FROM dealership_car WHERE Car_name LIKE '%${search}%' OR Car_brand LIKE '%${search}%'`;
+        return db.execute(sql);
+    }
 }
 
 module.exports = Car;

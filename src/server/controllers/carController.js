@@ -10,6 +10,16 @@ exports.getAllCar = async(req, res) => {
     }
 };
 
+exports.getCarBySearch = async(req, res) => {
+    try {
+        const search = req.body.search;
+        const cars = await Car.findBySearch(search);
+        res.status(200).json({ cars })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 exports.getCarByID = async(req, res) => {
     try {
         let carId = req.params.id;
@@ -52,6 +62,7 @@ exports.updateCarByID = async(req, res) => {
         let carId = req.params.id;
         let {name, brand, model, bodytype, yearmodel, price} = req.body;
         let car = await Car.updateCarById(carId, name, brand, model, bodytype, yearmodel, price);
+
         res.status(200).json({
             message: "UpdatedCar",
         })

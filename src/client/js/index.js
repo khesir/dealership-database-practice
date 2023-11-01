@@ -94,7 +94,7 @@ addBtn.onclick = function () {
     }
     console.log(carData.yearModel);
 
-    fetch('http://localhost:3000/car/',{
+    fetch('http://localhost:3000/car/createCar',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,33 +112,61 @@ function sleep(ms){
 function insertRowToTable(data){
     const table1 = document.getElementById('table1');
     const table2 = document.getElementById('table2');
-    const isTableData1 = table1.querySelector(".no-data");
-    const isTableData2 = table2.querySelector(".no-data");
+
     tableHtml = "";
     tableHtml += "<tr>";
-    tableHtml += `<td>${Dealership_car_id}</td>`;
-    tableHtml += `<td>${Car_name}</td>`;
-    tableHtml += `<td>${Car_brand}</td>`;
-    tableHtml += `<td>${Car_model}</td>`;
-    tableHtml += `<td>${Car_body_type}</td>`;
-    tableHtml += `<td>${Car_year_model}</td>`;
-    tableHtml += `<td>${Car_price}</td>`;
+    tableHtml += `<td>${data.Dealership_car_id}</td>`;
+    tableHtml += `<td>${data.Car_name}</td>`;
+    tableHtml += `<td>${data.Car_brand}</td>`;
+    tableHtml += `<td>${data.Car_model}</td>`;
+    tableHtml += `<td>${data.Car_body_type}</td>`;
+    tableHtml += `<td>${data.Car_year_model}</td>`;
+    tableHtml += `<td>${data.Car_price}</td>`;
     tableHtml += `<td><button class="edit-row-btn" id="${Dealership_car_id}">Edit</button><button class="delete-row-btn" id="${Dealership_car_id}">Delete</button></td>`;
     tableHtml += "</tr>";
 
-    if(isTableData1){
-        table1.innerHTML += tableHtml;
+    table1.innerHTML += tableHtml;
+    table2.innerHTML += tableHtml;
+}
+
+const searchBtn = document.getElementById('searchBtn');
+
+searchBtn.onclick = function () {
+    console.log("Search button is clicked");
+    const searchValue = document.getElementById('searchInput').value;
+    fetch('http://localhost:3000/car/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ search: searchValue })
+    })
+    .then(response => response.json())
+    .then(data => loadHTMLTable(data['cars']));
+}
+
+function searchedTable() {
+    const table1 = document.getElementById('table1');
+
+    if(data[0] === 0){
+        return;
     }
-    else{
-        const newtable1 = table1.insertRow()
-        newtable1 = tableHtml;
-    }
-    
-    if(isTableData2){
-        table2.innerHTML += tableHtml;
-    }
-    else{
-        const newtable2 = table2.insertRow()
-        newtable2 = tableHtml;
-    }
+
+
+    let tableHtml = "";
+    data[0].forEach(function ({Dealership_car_id, Car_name, Car_brand, Car_model,Car_body_type ,Car_year_model, Car_price}) {
+        tableHtml += "<tr>";
+        tableHtml += `<td>${Dealership_car_id}</td>`;
+        tableHtml += `<td>${Car_name}</td>`;
+        tableHtml += `<td>${Car_brand}</td>`;
+        tableHtml += `<td>${Car_model}</td>`;
+        tableHtml += `<td>${Car_body_type}</td>`;
+        tableHtml += `<td>${Car_year_model}</td>`;
+        tableHtml += `<td>${Car_price}</td>`;
+        tableHtml += `<td><button class="edit-row-btn" data-id=${Dealership_car_id}>Edit</button><button class="delete-row-btn" data-id=${Dealership_car_id}>Delete</button></td>`;
+        tableHtml += "</tr>";
+        tableHtml += "</tr>";
+    });
+
+    table1.innerHTML = tableHtml;
 }

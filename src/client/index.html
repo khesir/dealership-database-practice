@@ -10,8 +10,8 @@
     <nav>
         <div class="container">Dealership Database</div>
         <div>
-            <input type="text" name="" id="" placeholder="Search">
-            <button type="button" id="searchBtn">Search</button>
+            <input type="search" name="search" placeholder="Search" id="searchInput">
+            <button id="searchBtn">Search</button>
         </div>
     </nav>
     <header>
@@ -39,7 +39,8 @@
         </div>
     </header>
     <section>
-        <form class="createForm">
+
+        <div>
             <label>Create Car Form</label><br>
             <input id="carName" type="text" placeholder="Car Name"><br>
             <input id="carBrand" type="text" placeholder="Car Brand"><br>
@@ -51,7 +52,8 @@
             <br>
 
             <label id="carNotif" class="hidden">Car has been created!</label>
-        </form>
+
+        </div>
         <div class="resTable">
             <table>
                 <thead>

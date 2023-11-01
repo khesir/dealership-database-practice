@@ -43,6 +43,24 @@ header div{
     margin: 30px;
 }
 
+.searchedSection{
+    margin: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#searchBtn{
+    padding: 2px 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #858585;
+    cursor: pointer;
+}
+
 .selectionTable{
     padding: 10px;
     margin: 20px;
