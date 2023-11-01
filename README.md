@@ -1,8 +1,11 @@
-## Basic Databases Implementation
+## Basic Database Implementation
 
 This repository is the barebone basic of how to connect from database to server and to server to client side using RESTful api
 
 This repository is purely for study purposes for those who just started creating fullstack webs
+
+
+![image](https://github.com/ajtollo/dealership-database-practice/assets/87099653/33e7141d-207c-41b4-a080-475baa7714f4)
 
 ## Deploy with node.js
 If you want to try and see for yourself how this things work, please follow this instruction
